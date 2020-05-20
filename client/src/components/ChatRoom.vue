@@ -10,8 +10,8 @@
         </ul>
 
         <form @submit.prevent="submit">
-          <div class="flex">
-            <text-input v-model="message" label="Message" :show-label="false" id="message" />
+          <div class="flex flex-col">
+            <text-input class="mb-4" v-model="message" label="Message" :show-label="false" id="message" />
             <button-input class="w-full" type="submit">Send Message</button-input>
           </div>
         </form>
@@ -23,12 +23,14 @@
 <script>
 import Card from '@/components/Card.vue'
 import TextInput from '@/components/TextInput.vue'
+import ButtonInput from '@/components/ButtonInput.vue'
 
 export default {
   name: 'Chat',
   components: {
     Card,
-    TextInput
+    TextInput,
+    ButtonInput
   },
   data () {
     return {

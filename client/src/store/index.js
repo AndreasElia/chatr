@@ -9,18 +9,6 @@ export default new Vuex.Store({
     socketMessage: ''
   },
   mutations: {
-    SOCKET_CONNECT (state) {
-      console.log(1)
-      state.isConnected = true
-    },
-    SOCKET_DISCONNECT (state) {
-      console.log(1)
-      state.isConnected = false
-    },
-    SOCKET_MESSAGE (state, message) {
-      console.log(1)
-      state.socketMessage = message
-    }
   },
   actions: {
   },

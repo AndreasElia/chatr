@@ -11,16 +11,6 @@
 
 <script>
 export default {
-  name: 'App',
-  ready () {
-    this.socket.on('join', () => {
-      console.log(44444)
-    })
-  },
-  created () {
-    window.onbeforeunload = () => {
-      this.$socket.emit('leave', 'foo')
-    }
-  }
+  name: 'App'
 }
 </script>

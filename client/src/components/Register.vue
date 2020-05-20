@@ -29,11 +29,6 @@ export default {
     }
   },
   created () {
-    this.$socket.on('join', (data) => {
-      // add message to messages saying user has joined
-      console.log('join', data)
-    })
-
     this.$socket.on('error', (data) => {
       console.log('error', data)
     })
@@ -43,11 +38,15 @@ export default {
       this.ready = true
       this.color = ~~(360 * Math.random())
 
-      this.$socket.emit('join', {
+      this.$socket.emit('message', {
         username: this.username,
         room: this.room,
         color: this.color
       })
+
+      this.$router.push('chat')
+
+      console.log('fired')
     }
   }
 }
