@@ -5,7 +5,7 @@
       <card title="Chat room">
         <ul class="h-64 overflow-y-scroll mb-4">
           <li v-for="(message, index) in messages" :key="index">
-            <span class="font-bold" :style="'color: hsla(' + message.color + ', 70%, 80%, 1)'">{{ message.username }}</span>: {{ message.message }}
+            <span class="font-semibold" :style="'color: hsla(' + message.color + ', 70%, 80%, 1)'">{{ message.username }}</span>: {{ message.message }}
           </li>
         </ul>
 
