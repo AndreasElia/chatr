@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '../store'
 import Home from '../views/Home.vue'
 import Rooms from '../views/Rooms.vue'
 
@@ -14,7 +15,8 @@ const routes = [
   {
     path: '/rooms',
     name: 'Rooms',
-    component: Rooms
+    component: Rooms,
+    meta: { requiresAuth: true }
   },
   {
     path: '/about',
@@ -30,6 +32,14 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth) && !store.state.user) {
+    next('/')
+  } else {
+    next()
+  }
 })
 
 export default router

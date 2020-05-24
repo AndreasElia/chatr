@@ -2,7 +2,7 @@
   <div class="w-full md:max-w-md mx-auto">
     <card title="Registration">
       <form @submit.prevent="submit">
-        <text-input class="mb-4" v-model="form.username" label="Username" id="username" />
+        <text-input class="mb-4" v-model="username" label="Username" id="username" />
         <button-input class="w-full" type="submit">Join Chatr</button-input>
       </form>
     </card>
@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import Card from '@/components/Card.vue'
 import TextInput from '@/components/TextInput.vue'
 import ButtonInput from '@/components/ButtonInput.vue'
@@ -23,30 +24,27 @@ export default {
   },
   data () {
     return {
-      form: {
-        username: '',
-        color: 1
-      },
-      jwt: null
-    }
-  },
-  sockets: {
-    auth: function (response) {
-      this.jwt = response.jwt
+      username: '',
+      color: null
     }
   },
   methods: {
+    ...mapActions(['register']),
+
     submit () {
       if (this.$socket.disconnected) {
         console.log('not connected to server')
         return
       }
 
-      this.form.color = ~~(360 * Math.random())
+      this.color = ~~(360 * Math.random())
 
-      this.$socket.emit('authenticate', this.form)
+      this.register({
+        username: this.username,
+        color: this.color
+      })
 
-      console.log('emitted')
+      this.$router.push('/rooms')
     }
   }
 }

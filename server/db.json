@@ -1,12 +1,50 @@
 {
   "rooms": [
     {
-      "name": "erher"
+      "name": "Random"
     },
     {
-      "name": "erwger"
+      "name": "Developers"
+    },
+    {
+      "name": "UX Design"
+    },
+    {
+      "name": "Bugs"
     }
   ],
   "user": {},
-  "count": 0
+  "count": 0,
+  "users": [
+    {
+      "username": "reh",
+      "color": 277,
+      "id": "Yb0e-fCv9aWGuo3eAAAC"
+    },
+    {
+      "username": "erh",
+      "color": 275,
+      "id": "NfNWen18qbauhmxkAAAE"
+    },
+    {
+      "username": "erh",
+      "color": 11,
+      "id": "sGEM3yTN1ebmbvjMAAAF"
+    },
+    {
+      "username": "erh",
+      "color": 123,
+      "id": "EhBHG3JEpZM_kZ-cAAAH"
+    },
+    {
+      "username": "erh",
+      "color": 303,
+      "id": "Vm0Mfwkr-wrE2rcQAAAL"
+    },
+    {
+      "username": "weg",
+      "color": 242,
+      "id": "WZ0V6n6j5cIswyYuAAAN"
+    }
+  ]
 }

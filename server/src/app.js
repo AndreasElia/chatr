@@ -15,24 +15,22 @@ const db = low(adapter)
 let count = {}
 
 // Set some defaults
-db.defaults({ rooms: [], user: {}, count: 0 }).write()
+db.defaults({ rooms: [], users: [], count: 0 }).write()
 
 io.on('connection', (socket) => {
-  socket.emit('success', {
-    message: 'Server Working'
+  socket.emit('rooms', db.get('rooms').value())
+
+  socket.on('register', (user) => {
+    db.get('users')
+      .push({ ...user, id: socket.id })
+      .write()
+
+    return { id: socket.id }
   })
 
-  console.log('1')
-
   socket.on('authenticate', (payload) => {
-    console.log('2')
-
     socket.emit('auth', {
       jwt: 'Generated JWT Token'
     })
-
-    console.log('3')
   })
-
-  console.log('4')
 })

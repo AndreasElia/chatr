@@ -5,19 +5,32 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    isConnected: false
+    isConnected: false,
+    user: {},
+    rooms: []
   },
   mutations: {
+    setUser (state, data) {
+      state.user = data
+    },
+    setRooms (state, data) {
+      state.rooms = data
+    }
   },
   actions: {
-    'SOCKET_error' (state, server) {
-      console.log('error')
+    'SOCKET_rooms' ({ commit, dispatch }, data) {
+      commit('setRooms', data)
     },
-    'SOCKET_success' (state, server) {
-      console.log('success')
+    socketEmit (_, { action, payload }) {
+      return this._vm.$socket.emit(action, payload)
     },
-    'SOCKET_info' (state, server) {
-      console.log('info')
+    async register ({ commit, dispatch }, data) {
+      const { id } = await dispatch('socketEmit', {
+        action: 'register',
+        payload: data
+      })
+
+      commit('setUser', { id, ...data })
     }
   },
   modules: {

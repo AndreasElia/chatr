@@ -11,7 +11,7 @@
 
           <div>
             <span class="inline-block rounded-full bg-green-500 w-2 h-2"></span>
-            <span class="text-gray-500 text-xs ml-2">13 online</span>
+            <span class="text-gray-500 text-xs ml-2">0 online</span>
           </div>
         </a>
       </div>
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Card from '@/components/Card.vue'
 import Alert from '@/components/Alert.vue'
 
@@ -29,10 +30,8 @@ export default {
     Card,
     Alert
   },
-  data () {
-    return {
-      rooms: []
-    }
+  computed: {
+    ...mapState(['user', 'rooms'])
   }
 }
 </script>
