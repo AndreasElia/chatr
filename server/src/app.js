@@ -18,25 +18,21 @@ let count = {}
 db.defaults({ rooms: [], user: {}, count: 0 }).write()
 
 io.on('connection', (socket) => {
-  console.log('connection')
-
-  socket.on('rooms', (data) => {
-    var allrooms = db.get('rooms').value()
-
-    console.log('allrooms', allrooms)
-
-    socket.broadcast.emit('allrooms', allrooms)
+  socket.emit('success', {
+    message: 'Server Working'
   })
 
-  socket.on('register', (data) => {
-    console.log('register', data)
+  console.log('1')
+
+  socket.on('authenticate', (payload) => {
+    console.log('2')
+
+    socket.emit('auth', {
+      jwt: 'Generated JWT Token'
+    })
+
+    console.log('3')
   })
 
-  socket.on('disconnect', () => {
-    console.log('disconnect')
-  })
-
-  socket.on('message', (data) => {
-    console.log('message', data)
-  })
+  console.log('4')
 })
