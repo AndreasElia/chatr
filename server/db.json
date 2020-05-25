@@ -1,16 +1,24 @@
 {
   "rooms": [
     {
-      "name": "Random"
+      "name": "Random",
+      "slug": "random"
     },
     {
-      "name": "Developers"
+      "name": "Developers",
+      "slug": "developers"
     },
     {
-      "name": "UX Design"
+      "name": "UX Design",
+      "slug": "ux-design"
     },
     {
-      "name": "Bugs"
+      "name": "General",
+      "slug": "general"
+    },
+    {
+      "name": "Bugs",
+      "slug": "bugs"
     }
   ],
   "user": {},

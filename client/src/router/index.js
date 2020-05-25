@@ -2,7 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '../store'
 import Home from '../views/Home.vue'
-import Rooms from '../views/Rooms.vue'
+import Rooms from '../views/rooms/Rooms.vue'
+import RoomsIndex from '../views/rooms/RoomsIndex.vue'
+import RoomsShow from '../views/rooms/RoomsShow.vue'
 
 Vue.use(VueRouter)
 
@@ -16,7 +18,20 @@ const routes = [
     path: '/rooms',
     name: 'Rooms',
     component: Rooms,
-    meta: { requiresAuth: true }
+    meta: { requiresAuth: true },
+    children: [
+      {
+        path: '/',
+        name: 'RoomsIndex',
+        component: RoomsIndex
+      },
+      {
+        path: ':slug',
+        name: 'RoomsShow',
+        component: RoomsShow,
+        props: true
+      }
+    ]
   },
   {
     path: '/about',
