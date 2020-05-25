@@ -10,7 +10,13 @@
     </div>
 
     <div class="my-6">
-      <span class="text-gray-500">messages</span>
+      <alert v-if="!messages.length">
+        No messages found.
+      </alert>
+
+      <div class="text-gray-500" v-for="(message, index) in messages" :key="index">
+        messages
+      </div>
     </div>
 
     <form class="w-full" @submit.prevent="submit">
@@ -20,15 +26,21 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Card from '@/components/Card.vue'
+import Alert from '@/components/Alert.vue'
 import TextInput from '@/components/TextInput.vue'
 
 export default {
   name: 'RoomsShow',
-  props: ['id'],
+  props: ['room'],
   components: {
     Card,
+    Alert,
     TextInput
+  },
+  computed: {
+    ...mapState(['messages'])
   },
   data () {
     return {
@@ -37,6 +49,8 @@ export default {
   },
   methods: {
     submit () {
+      this.$socket.emit('message', this.message)
+
       this.message = null
     }
   }

@@ -7,7 +7,8 @@ export default new Vuex.Store({
   state: {
     isConnected: false,
     user: {},
-    rooms: []
+    rooms: [],
+    messages: []
   },
   mutations: {
     setUser (state, data) {
@@ -15,11 +16,27 @@ export default new Vuex.Store({
     },
     setRooms (state, data) {
       state.rooms = data
+    },
+    setMessage (state, data) {
+      state.messages = [...state.messages, data]
+    },
+    reset (state) {
+      this.isConnected = false
+      this.user = {}
+      this.rooms = []
+      this.messages = []
     }
   },
   actions: {
     'SOCKET_rooms' ({ commit, dispatch }, data) {
+      console.log('rooms', data)
+
       commit('setRooms', data)
+    },
+    'SOCKET_message' ({ commit, dispatch }, data) {
+      console.log('message', data)
+
+      commit('setMessage', data)
     },
     socketEmit (_, { action, payload }) {
       return this._vm.$socket.emit(action, payload)

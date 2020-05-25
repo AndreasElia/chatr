@@ -21,6 +21,8 @@ io.on('connection', (socket) => {
   socket.emit('rooms', db.get('rooms').value())
 
   socket.on('register', (user) => {
+    console.log('register', user)
+
     db.get('users')
       .push({ ...user, id: socket.id })
       .write()
@@ -28,9 +30,25 @@ io.on('connection', (socket) => {
     return { id: socket.id }
   })
 
+  socket.on('join', (slug) => {
+    console.log('join', slug)
+
+    socket.room = slug
+
+    socket.join(slug)
+  })
+
   socket.on('authenticate', (payload) => {
+    console.log('authenticate', payload)
+
     socket.emit('auth', {
       jwt: 'Generated JWT Token'
     })
+  })
+
+  socket.on('message', (data) => {
+    console.log('message', data)
+
+    io.to(socket.room).emit('message', data)
   })
 })

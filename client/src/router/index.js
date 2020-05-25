@@ -26,7 +26,7 @@ const routes = [
         component: RoomsIndex
       },
       {
-        path: ':slug',
+        path: ':room',
         name: 'RoomsShow',
         component: RoomsShow,
         props: true
