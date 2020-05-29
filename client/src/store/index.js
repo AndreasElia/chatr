@@ -21,10 +21,18 @@ export default new Vuex.Store({
 
       state.rooms = data
     },
+    setMessages (state, data) {
+      console.log('setMessages', data)
+
+      state.messages = data
+    },
     setMessage (state, data) {
       console.log('setMessage', data)
 
-      state.messages = [...state.messages, data]
+      state.messages.push({
+        user: state.user.name,
+        message: data
+      })
     },
     reset (state) {
       console.log('reset')
@@ -41,6 +49,11 @@ export default new Vuex.Store({
 
       commit('setRooms', data)
     },
+    'SOCKET_messages' ({ commit, dispatch }, data) {
+      console.log('messages', data)
+
+      commit('setMessages', data)
+    },
     'SOCKET_message' ({ commit, dispatch }, data) {
       console.log('message', data)
 
@@ -50,6 +63,8 @@ export default new Vuex.Store({
       return this._vm.$socket.emit(action, payload)
     },
     async register ({ commit, dispatch }, data) {
+      console.log('register', data)
+
       const { id } = await dispatch('socketEmit', {
         action: 'register',
         payload: data

@@ -1,18 +1,36 @@
 {
   "rooms": [
     {
-      "name": "Random",
-      "slug": "random"
-    },
-    {
-      "name": "Developers",
-      "slug": "developers"
-    },
-    {
-      "name": "UX Design",
-      "slug": "ux-design"
+      "name": "Foo",
+      "slug": "foo"
     }
   ],
-  "users": [],
+  "messages": [
+    {
+      "user": "Bob",
+      "room": "foo",
+      "message": "erher"
+    },
+    {
+      "user": "John",
+      "room": "foo",
+      "message": "Hey"
+    },
+    {
+      "user": "John",
+      "room": "foo",
+      "message": "sup"
+    },
+    {
+      "user": "Bob",
+      "room": "foo",
+      "message": "Hey John"
+    },
+    {
+      "user": "John",
+      "room": "foo",
+      "message": "Sup Bob"
+    }
+  ],
   "count": 0
 }

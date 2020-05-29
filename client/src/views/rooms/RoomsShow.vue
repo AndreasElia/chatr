@@ -47,6 +47,9 @@ export default {
       message: null
     }
   },
+  mounted () {
+    this.$socket.emit('room', this.room)
+  },
   methods: {
     submit () {
       this.$socket.emit('message', this.message)

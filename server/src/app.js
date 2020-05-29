@@ -15,15 +15,17 @@ const db = low(adapter)
 let count = {}
 
 // Set some defaults
-db.defaults({ rooms: [], users: [], count: 0 }).write()
+db.defaults({
+  rooms: [],
+  messages: [],
+  count: 0
+}).write()
 
 io.on('connection', (socket) => {
   socket.on('register', (user) => {
     console.log('register', user)
 
-    db.get('users')
-      .push({ ...user, id: socket.id })
-      .write()
+    socket.user = user.name
 
     socket.emit('rooms', db.get('rooms').value())
 
@@ -36,6 +38,20 @@ io.on('connection', (socket) => {
     socket.room = slug
 
     socket.join(slug)
+
+    var messages = db.get('messages')
+      .filter({ room: socket.room })
+      .value()
+
+    socket.emit('messages', messages)
+  })
+
+  socket.on('room', (slug) => {
+    console.log('room', slug)
+
+    return db.get('rooms')
+      .find({ slug: slug })
+      .value()
   })
 
   socket.on('authenticate', (payload) => {
@@ -48,6 +64,15 @@ io.on('connection', (socket) => {
 
   socket.on('message', (data) => {
     console.log('message', data)
+    console.log('message', socket.user)
+
+    db.get('messages')
+      .push({
+        user: socket.user,
+        room: socket.room,
+        message: data
+      })
+      .write()
 
     io.to(socket.room).emit('message', data)
   })
