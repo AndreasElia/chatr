@@ -18,14 +18,14 @@ let count = {}
 db.defaults({ rooms: [], users: [], count: 0 }).write()
 
 io.on('connection', (socket) => {
-  socket.emit('rooms', db.get('rooms').value())
-
   socket.on('register', (user) => {
     console.log('register', user)
 
     db.get('users')
       .push({ ...user, id: socket.id })
       .write()
+
+    socket.emit('rooms', db.get('rooms').value())
 
     return { id: socket.id }
   })

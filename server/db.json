@@ -11,63 +11,25 @@
     {
       "name": "UX Design",
       "slug": "ux-design"
-    },
-    {
-      "name": "General",
-      "slug": "general"
-    },
-    {
-      "name": "Bugs",
-      "slug": "bugs"
     }
   ],
-  "user": {},
-  "count": 0,
   "users": [
     {
-      "username": "reh",
-      "color": 277,
-      "id": "Yb0e-fCv9aWGuo3eAAAC"
+      "name": "rtj",
+      "id": "U54zGF292hCjPAu8AAAA"
     },
     {
-      "username": "erh",
-      "color": 275,
-      "id": "NfNWen18qbauhmxkAAAE"
+      "name": "reh",
+      "id": "5K5cVul_zm2fB2prAAAA"
     },
     {
-      "username": "erh",
-      "color": 11,
-      "id": "sGEM3yTN1ebmbvjMAAAF"
+      "name": "fgh",
+      "id": "BGgQtulleyiZAD4nAAAB"
     },
     {
-      "username": "erh",
-      "color": 123,
-      "id": "EhBHG3JEpZM_kZ-cAAAH"
-    },
-    {
-      "username": "erh",
-      "color": 303,
-      "id": "Vm0Mfwkr-wrE2rcQAAAL"
-    },
-    {
-      "username": "weg",
-      "color": 242,
-      "id": "WZ0V6n6j5cIswyYuAAAN"
-    },
-    {
-      "username": "wgeweg",
-      "color": 196,
-      "id": "j0qL3p9oY2oMw9p0AAAE"
-    },
-    {
-      "username": "erhs",
-      "color": 9,
-      "id": "kgb5mEpKh6PyH12SAAAC"
-    },
-    {
-      "username": "weg",
-      "color": 10,
-      "id": "w--Ut8IAyxx9MSYaAAAE"
+      "name": "weg",
+      "id": "T1hrrlpZQVKy9axiAAAC"
     }
-  ]
+  ],
+  "count": 0
 }

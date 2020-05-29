@@ -1,7 +1,7 @@
 <template>
   <card>
     <div class="flex justify-between items-center">
-      <strong class="font-semibold text-gray-700 text-sm">Room name</strong>
+      <strong class="font-semibold text-gray-700 text-sm">{{ room }}</strong>
 
       <div>
         <span class="inline-block rounded-full bg-green-500 w-2 h-2"></span>
@@ -15,7 +15,7 @@
       </alert>
 
       <div class="text-gray-500" v-for="(message, index) in messages" :key="index">
-        messages
+        <span class="font-semibold">{{ message.user }}</span>: {{ message.message }}
       </div>
     </div>
 

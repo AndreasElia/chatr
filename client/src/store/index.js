@@ -12,15 +12,23 @@ export default new Vuex.Store({
   },
   mutations: {
     setUser (state, data) {
+      console.log('setUser', data)
+
       state.user = data
     },
     setRooms (state, data) {
+      console.log('setRooms', data)
+
       state.rooms = data
     },
     setMessage (state, data) {
+      console.log('setMessage', data)
+
       state.messages = [...state.messages, data]
     },
     reset (state) {
+      console.log('reset')
+
       this.isConnected = false
       this.user = {}
       this.rooms = []

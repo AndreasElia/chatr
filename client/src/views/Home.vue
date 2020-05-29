@@ -2,7 +2,7 @@
   <div class="w-full md:max-w-md mx-auto">
     <card title="Registration">
       <form @submit.prevent="submit">
-        <text-input class="mb-4" v-model="username" label="Username" id="username" />
+        <text-input class="mb-4" v-model="name" label="Name" id="name" />
         <button-input class="w-full" type="submit">Join Chatr</button-input>
       </form>
     </card>
@@ -24,8 +24,7 @@ export default {
   },
   data () {
     return {
-      username: '',
-      color: null
+      name: ''
     }
   },
   methods: {
@@ -37,12 +36,7 @@ export default {
         return
       }
 
-      this.color = ~~(360 * Math.random())
-
-      this.register({
-        username: this.username,
-        color: this.color
-      })
+      this.register({ name: this.name })
 
       this.$router.push('/rooms')
     }
