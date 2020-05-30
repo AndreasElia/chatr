@@ -54,14 +54,6 @@ io.on('connection', (socket) => {
       .value()
   })
 
-  socket.on('authenticate', (payload) => {
-    console.log('authenticate', payload)
-
-    socket.emit('auth', {
-      jwt: 'Generated JWT Token'
-    })
-  })
-
   socket.on('message', (data) => {
     console.log('message', data)
 
@@ -69,13 +61,13 @@ io.on('connection', (socket) => {
       .push({
         user: socket.user,
         room: socket.room,
-        message: data
+        message: data.message
       })
       .write()
 
     io.to(socket.room).emit('message', {
       user: socket.user,
-      message: data
+      message: data.message
     })
   })
 })

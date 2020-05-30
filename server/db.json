@@ -90,6 +90,45 @@
       "user": "2",
       "room": "foo",
       "message": "good thanks 1"
+    },
+    {
+      "user": "egwe",
+      "room": "foo",
+      "message": {
+        "message": "h"
+      }
+    },
+    {
+      "user": "egwe",
+      "room": "foo",
+      "message": {
+        "message": "rh"
+      }
+    },
+    {
+      "user": "weg",
+      "room": "foo",
+      "message": "rtj"
+    },
+    {
+      "user": "weg",
+      "room": "foo",
+      "message": "werg"
+    },
+    {
+      "user": "weg",
+      "room": "foo",
+      "message": "wet"
+    },
+    {
+      "user": "weg",
+      "room": "foo",
+      "message": "h"
+    },
+    {
+      "user": "weg",
+      "room": "foo",
+      "message": "rht"
     }
   ],
   "count": 0

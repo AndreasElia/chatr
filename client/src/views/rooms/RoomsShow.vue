@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     submit () {
-      this.$socket.emit('message', this.message)
+      this.$socket.emit('message', { message: this.message })
 
       this.message = null
     }
