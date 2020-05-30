@@ -9,7 +9,7 @@
       </div>
     </div>
 
-    <div class="my-6">
+    <div class="my-6 h-64 overflow-y-scroll" ref="chat">
       <alert v-if="!messages.length">
         No messages found.
       </alert>
@@ -41,6 +41,15 @@ export default {
   },
   computed: {
     ...mapState(['messages'])
+  },
+  watch: {
+    messages () {
+      setTimeout(() => {
+        if (this.$refs.chat) {
+          this.$refs.chat.scrollTop = this.$refs.chat.scrollHeight
+        }
+      }, 0)
+    }
   },
   data () {
     return {
