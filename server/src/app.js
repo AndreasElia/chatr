@@ -64,7 +64,6 @@ io.on('connection', (socket) => {
 
   socket.on('message', (data) => {
     console.log('message', data)
-    console.log('message', socket.user)
 
     db.get('messages')
       .push({
@@ -74,6 +73,9 @@ io.on('connection', (socket) => {
       })
       .write()
 
-    io.to(socket.room).emit('message', data)
+    io.to(socket.room).emit('message', {
+      user: socket.user,
+      message: data
+    })
   })
 })

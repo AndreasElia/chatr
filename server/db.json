@@ -30,6 +30,66 @@
       "user": "John",
       "room": "foo",
       "message": "Sup Bob"
+    },
+    {
+      "user": "gwe",
+      "room": "foo",
+      "message": "weg"
+    },
+    {
+      "user": "gwe",
+      "room": "foo",
+      "message": "erh"
+    },
+    {
+      "user": "gwe",
+      "room": "foo",
+      "message": "erh"
+    },
+    {
+      "user": "gwe",
+      "room": "foo",
+      "message": "erh"
+    },
+    {
+      "user": "hhh",
+      "room": "foo",
+      "message": "erher"
+    },
+    {
+      "user": "hhh",
+      "room": "foo",
+      "message": "erge"
+    },
+    {
+      "user": "wegweg",
+      "room": "foo",
+      "message": "esrh"
+    },
+    {
+      "user": "wegweg",
+      "room": "foo",
+      "message": "esrh"
+    },
+    {
+      "user": "1",
+      "room": "foo",
+      "message": "hi"
+    },
+    {
+      "user": "2",
+      "room": "foo",
+      "message": "hi"
+    },
+    {
+      "user": "1",
+      "room": "foo",
+      "message": "how are you 2?"
+    },
+    {
+      "user": "2",
+      "room": "foo",
+      "message": "good thanks 1"
     }
   ],
   "count": 0

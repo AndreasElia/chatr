@@ -30,8 +30,8 @@ export default new Vuex.Store({
       console.log('setMessage', data)
 
       state.messages.push({
-        user: state.user.name,
-        message: data
+        user: data.user,
+        message: data.message
       })
     },
     reset (state) {
