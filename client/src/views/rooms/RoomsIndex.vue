@@ -1,9 +1,5 @@
 <template>
   <card title="Rooms">
-    <alert v-if="!rooms.length">
-      No rooms found.
-    </alert>
-
     <div class="grid grid-cols-3 gap-4">
       <button class="flex flex-col border-2 hover:border-gray-700 focus:outline-none hover:bg-gray-100 rounded-lg p-4 pointer" @click="join(room)" v-for="(room, index) in rooms" :key="index">
         <strong class="font-semibold text-gray-700 text-sm">{{ room.name }}</strong>
@@ -20,13 +16,11 @@
 <script>
 import { mapState } from 'vuex'
 import Card from '@/components/Card.vue'
-import Alert from '@/components/Alert.vue'
 
 export default {
   name: 'RoomsIndex',
   components: {
-    Card,
-    Alert
+    Card
   },
   computed: {
     ...mapState(['user', 'rooms'])

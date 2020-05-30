@@ -1,19 +1,15 @@
 <template>
   <card>
     <div class="flex justify-between items-center">
-      <strong class="font-semibold text-gray-700 text-sm">{{ room }}</strong>
+      <strong class="font-semibold text-gray-700 text-sm">{{ room.name }}</strong>
 
       <div>
         <span class="inline-block rounded-full bg-green-500 w-2 h-2"></span>
-        <span class="text-gray-500 text-xs ml-2">0 online</span>
+        <span class="text-gray-500 text-xs ml-2">{{ room.online }} online</span>
       </div>
     </div>
 
     <div class="my-6 h-64 overflow-y-scroll" ref="chat">
-      <alert v-if="!messages.length">
-        No messages found.
-      </alert>
-
       <div class="text-gray-500" v-for="(message, index) in messages" :key="index">
         <span class="font-semibold">{{ message.user }}</span>: {{ message.message }}
       </div>
@@ -28,19 +24,17 @@
 <script>
 import { mapState } from 'vuex'
 import Card from '@/components/Card.vue'
-import Alert from '@/components/Alert.vue'
 import TextInput from '@/components/TextInput.vue'
 
 export default {
   name: 'RoomsShow',
-  props: ['room'],
+  props: ['slug'],
   components: {
     Card,
-    Alert,
     TextInput
   },
   computed: {
-    ...mapState(['messages'])
+    ...mapState(['user', 'messages', 'room'])
   },
   watch: {
     messages () {
@@ -56,7 +50,11 @@ export default {
       message: null
     }
   },
-  mounted () {
+  created () {
+    window.addEventListener('beforeunload', () => {
+      this.$socket.emit('offline', { user: this.user.name })
+    })
+
     this.$socket.emit('room', this.room)
   },
   methods: {

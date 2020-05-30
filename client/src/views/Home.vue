@@ -24,18 +24,13 @@ export default {
   },
   data () {
     return {
-      name: ''
+      name: null
     }
   },
   methods: {
     ...mapActions(['register']),
 
     submit () {
-      if (this.$socket.disconnected) {
-        console.log('not connected to server')
-        return
-      }
-
       this.register({ name: this.name })
 
       this.$router.push('/rooms')

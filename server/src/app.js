@@ -17,8 +17,7 @@ let count = {}
 // Set some defaults
 db.defaults({
   rooms: [],
-  messages: [],
-  count: 0
+  messages: []
 }).write()
 
 io.on('connection', (socket) => {
@@ -39,19 +38,47 @@ io.on('connection', (socket) => {
 
     socket.join(slug)
 
+    var room = db.get('rooms')
+      .find({ slug: socket.room })
+      .value()
+
+    db.get('rooms')
+      .find({ slug: socket.room })
+      .assign({ online: room.online + 1 })
+      .write()
+
     var messages = db.get('messages')
       .filter({ room: socket.room })
       .value()
 
-    socket.emit('messages', messages)
+    socket.emit('room', {
+      room: room,
+      messages: messages
+    })
+
+    socket.broadcast.in(socket.room).emit('online', {
+      user: socket.user,
+      count: room.online
+    })
   })
 
-  socket.on('room', (slug) => {
-    console.log('room', slug)
+  socket.on('offline', (data) => {
+    console.log('offline', data)
 
-    return db.get('rooms')
-      .find({ slug: slug })
+    if (! socket.room) return
+
+    var room = db.get('rooms')
+      .find({ slug: socket.room })
       .value()
+
+    db.get('rooms')
+      .find({ slug: socket.room })
+      .assign({ online: room.online - 1 })
+      .write()
+
+    socket.leave(socket.room)
+
+    socket.broadcast.in(socket.room).emit('offline', { user: socket.user })
   })
 
   socket.on('message', (data) => {
